@@ -1,0 +1,23 @@
+<%- include('../../partils/header')%>
+<body>
+    <%- include('../../partils/navbar')%>
+    <div class="container">
+        <br>
+        <div class="card">
+            <div class="card-header">
+                <h2>Editar</h2>
+                <h4>Categoria: <%= category.title %></h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/categories/update">
+                    <input type="hidden" name="id" value="<%= category.id %>">
+                    <input class="form-control" type="text" name="title" placeholder="Informe o novo título da categoria">
+                    <br>
+                    <button class="btn btn-success">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>   
+<%- include('../../partils/footer')%> 
+    
