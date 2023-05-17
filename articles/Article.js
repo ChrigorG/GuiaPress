@@ -1,7 +1,7 @@
 //Model
 const sequelize = require("sequelize");
 const connection = require("../database/database");
-const category = require("../categories/category");
+const category = require("../categories/Category");
 
 const articles = connection.define('articles',{
     title:{ 
@@ -17,6 +17,8 @@ const articles = connection.define('articles',{
         allowNull: false
     }
 });
+
+articles.sync({force: false});
 
 //Relacionamento 1 para N 
 category.hasMany(articles);

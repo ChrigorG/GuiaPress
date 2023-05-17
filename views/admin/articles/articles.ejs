@@ -1,0 +1,48 @@
+<%- include('../../partils/header')%>
+<body>
+    <%- include('../../partils/navbar')%>
+    <div class="container">
+        <hr>
+        <h2>Artigos</h2>
+        <a class="btn btn-outline-success" href="/admin/articles/new">Cadastrar</a>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Slug</th> 
+                    <th>Categoria</th>
+                    <th>Ações</th>  
+                </tr>
+            </thead>
+            <tbody>
+                <% articles.forEach(article => {%>
+                    <tr>
+                        <td><%= article.id %></td>
+                        <td><%= article.title %></td>
+                        <td><%= article.slug %></td> 
+                        <td><%= article.category.title %></td>
+                        <td>
+                            <form method="POST" action="/articles/delete" style="display: inline;" onsubmit="confirmarExclusao(event, this)">
+                                <input type="hidden" name="id" value="<%= article.id %>">
+                                <button class="btn btn-danger">Deletar</button>
+                            </form>
+                            <a href="/admin/articles/update/<%= article.id %>" class="btn btn-warning">Editar</a>
+                        </td>  
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+<%- include('../../partils/footer')%> 
+<script>
+    function confirmarExclusao(event, form){
+        event.preventDefault();
+        const decision = confirm("Deseja realmente excluir?");
+        if(decision){
+            form.submit();
+        }
+    }
+</script>

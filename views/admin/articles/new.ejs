@@ -13,7 +13,7 @@
                     <input class="form-control" type="text" name="title" placeholder="Informe o título do artigo">
                     <br>
                     <label>Categoria</label>
-                    <select name="listcategory" class="form-control">
+                    <select name="IDListCategory" class="form-control">
                         <% category.forEach((category) => {%>
                             <option value="<%= category.id %>"><%= category.title %></option>
                         <% })%>

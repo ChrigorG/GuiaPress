@@ -1,0 +1,56 @@
+<%- include('../../partils/header')%>
+<body>
+    <%- include('../../partils/navbar')%>
+    <div class="container">
+        <br>
+        <div class="card">
+            <div class="card-header">
+                <h2>Edição artigo</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/articles/update">
+                    <input type="hidden" value="<%= articles.id %>" name="id">
+                    <label>Novo título:</label>
+                    <input class="form-control" type="text" name="title" placeholder="Informe o novo título do artigo" value="<%= articles.title %>">
+                    <br>
+                    <label>Categoria</label>
+                    <select name="IDListCategory" class="form-control">
+                        <% category.forEach((category) => {%>
+                            <% if(category.id == articles.categoryId){ %>
+                                <option value="<%= category.id %>" selected><%= category.title %></option>
+                            <% }else{ %>
+                                <option value="<%= category.id %>"><%= category.title %></option>
+                            <% } %>
+                        <% })%>
+                    </select>
+                    <br>
+                    <textarea class="form-control" placeholder="Demonstre tua imagição e teu conhecimento aqui" name="body" id="bodytextarea"></textarea>
+                    <br>
+                    <button class="btn btn-success">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>   
+<%- include('../../partils/footer')%>
+
+<div id="content" style="display: none;">
+    <%- articles.body %>
+</div>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    //Doment: https://www.tiny.cloud/docs/tinymce/6/
+    tinymce.init({
+        language: 'pt_BR',
+        selector: "#bodytextarea",
+        plugins: 'advlist autolink link image lists print preview hr searchreplace'+
+        'wordcount help fullscreen insertdatetime media save table paste emoticons',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough' + 
+        ' | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography' + 
+        ' | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        init_instance_callback: () => {
+            tinymce.get("bodytextarea").setContent($("#content").html())
+        }
+    });
+</script>

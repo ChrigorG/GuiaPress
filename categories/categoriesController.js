@@ -31,7 +31,7 @@ router.post("/categories/delete", (req, resp) => {
 });
 
 router.get("/admin/categories/edit/:id", (req, resp) => {
-    const id = Number(req.params.id);
+    const id = req.params.id;
     category.findByPk(id).then(category => {
         if(category != undefined){
             resp.render("admin/categories/edit", {category: category});
@@ -63,7 +63,11 @@ router.post("/categories/update", (req, resp) => {
     const id = req.body.id;
     const title = req.body.title;
 
-    category.update({title: title, slug: slogify(title)},{
+    category.update({
+        title: title, 
+        slug: slogify(title)
+    },
+    {
         where: {
             id: id
         }
