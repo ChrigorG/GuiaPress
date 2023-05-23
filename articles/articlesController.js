@@ -3,10 +3,10 @@ const router = express.Router();
 const category = require("../categories/Category");
 const articles = require("./Article");
 const slugify = require("slugify");
-
+const adminauth = require("../middlewares/adminauth");
 //Method GET
 
-router.get("/admin/articles", (req, resp) => {
+router.get("/admin/articles", adminauth, (req, resp) => {
     articles.findAll({
         include: [{model: category}]
     }).then(articles => {
@@ -14,7 +14,7 @@ router.get("/admin/articles", (req, resp) => {
     });
 });
 
-router.get("/admin/articles/new", (req, resp) => {
+router.get("/admin/articles/new", adminauth, (req, resp) => {
     category.findAll().then(category => {
         resp.render("admin/articles/new", {category: category});
     }).catch(err => {
@@ -22,7 +22,7 @@ router.get("/admin/articles/new", (req, resp) => {
     });
 });
 
-router.get("/admin/articles/update/:id", (req, resp) => {
+router.get("/admin/articles/update/:id", adminauth, (req, resp) => {
     const id = req.params.id;
     
     articles.findByPk(id).then(articles => {
@@ -69,14 +69,12 @@ router.get("/articles/page/:num", (req, resp) => {
         category.findAll().then(categories => {
             resp.render("admin/articles/page", {result: result, categories: categories});
         });
-
-        
     })
 });
 
 // Method POST
 
-router.post("/articles/save", (req, resp) =>{
+router.post("/articles/save", adminauth, (req, resp) =>{
     const title = req.body.title;
     const body = req.body.body;
     const idCategory = req.body.IDListCategory;
@@ -93,7 +91,7 @@ router.post("/articles/save", (req, resp) =>{
     });
 });
 
-router.post("/articles/update", (req, resp) =>{
+router.post("/articles/update", adminauth, (req, resp) =>{
     const id = req.body.id;
     const title = req.body.title;
     const body = req.body.body;
@@ -116,7 +114,7 @@ router.post("/articles/update", (req, resp) =>{
     });
 });
 
-router.post("/articles/delete", (req, resp) => {
+router.post("/articles/delete", adminauth, (req, resp) => {
     const id = req.body.id;
     if(id != undefined && !isNaN(id)){
         articles.destroy({

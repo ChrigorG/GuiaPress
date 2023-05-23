@@ -16,9 +16,11 @@ const user = require("./user/user");
 app.set("view engine", "ejs");
 
 //Session
-app.get(session({
+app.use(session({
     secret: "key_character",
-    cookie: {}
+    cookie: { 
+        maxAge: 30 * 60 * 1000 
+    }
 }));
 
 //Static (Public)
@@ -86,7 +88,7 @@ app.get("/category/:slug", (req, resp) => {
         if(categorys != undefined){  
             category.findAll().then(categories => {
                 console.log(categories) 
-                resp.render("index", {article: categorys.articles, category: categories});
+                resp.render("index", {article: categorys.articles, categories: categories});
             });
         }else{
             resp.redirect("/");
