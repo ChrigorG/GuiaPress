@@ -1,4 +1,4 @@
-# GuiaPress - Pego como exemplo WordPress
+# GuiaPress - Referencias tiradas do WordPress
 
 Este um projeto indepedente com proposito de agregar conhecimento com JavaScript, NodeJs, Express.JS, Middlewares.
 
