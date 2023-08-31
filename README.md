@@ -1,6 +1,6 @@
 # GuiaPress - Referencias tiradas do WordPress
 
-Este um projeto indepedente com proposito de agregar conhecimento com JavaScript, NodeJs, Express.JS, Middlewares. Seu proposito é criar um fórum onde a comunidade possa trocar informações atráves de escrita de artigos.
+Este um projeto indepedente com proposito de agregar conhecimento com JavaScript, NodeJs, MySQL, Middlewares. Seu proposito é criar um fórum onde a comunidade possa trocar informações atráves de escrita de artigos.
 
 Funcional, porém, em desenvolvimento...
 
