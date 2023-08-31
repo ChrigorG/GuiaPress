@@ -27,4 +27,18 @@ Dependencias Utilizadas:
 - mysql2
 - sequelize
 - slugify
+- nodemon
 
+Modo de uso: 
+
+1º Faça um clone do projeto
+
+2º Abra em sua IDE favorita  
+
+3º Dentro do projeto, no terminal, execute o camando **npm install** para instalar as dependências
+
+4º Em seu SGBD, crie um banco chamado **guiapress** (certifique no arquivo /database/database.js se seus dados do MySQL confere com o seu).
+
+5º No terminal novamente, execute o comando **nodemon app.js** ou **node app.js** para inicializar o servidor, Pronto!!
+
+6º Abra seu navegador na URL: http://localhost:8083/
