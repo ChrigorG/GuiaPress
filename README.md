@@ -12,11 +12,11 @@ Funcional, porém, em desenvolvimento...
 ![cadastro](https://github.com/ChrigorG/GuiaPress/assets/99369312/ae3de69e-09a3-44c8-8ada-b864561e63a8)
 
 
-Recursos Necessarios:
+## Recursos Necessarios:
 - Node.JS
 - MySQL (Seja local ou via Docker)
  
-Dependencias Utilizadas:
+## Dependencias Utilizadas:
 - Node.JS
 - Vue.JS
 - Express.JS
@@ -29,7 +29,7 @@ Dependencias Utilizadas:
 - slugify
 - nodemon
 
-Modo de uso: 
+## Modo de uso: 
 
 1º Faça um clone do projeto
 
