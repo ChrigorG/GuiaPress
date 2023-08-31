@@ -4,13 +4,13 @@ const bodyparser = require("body-parser");
 const session = require("express-session");
 const connection = require("./database/database");
 
-const categoriesController = require("./categories/CategoriesController");
+const categoriesController = require("./categories/categoriesController");
 const articlesController = require("./articles/articlesController"); 
 const usersController = require("./user/usersController");
 
 const articles = require("./articles/Article");
 const category = require("./categories/Category");
-const user = require("./user/user");
+const user = require("./user/User");
 
 //View engine
 app.set("view engine", "ejs");
@@ -98,7 +98,7 @@ app.get("/category/:slug", (req, resp) => {
     });
 });
 
-app.listen(8080, () => {
+app.listen(8083, () => {
     let date = new Date();
     console.log(`Only GuiaPress --> ${date}`);
 });

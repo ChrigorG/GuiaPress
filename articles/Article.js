@@ -15,6 +15,10 @@ const articles = connection.define('articles',{
     body: {
         type: sequelize.TEXT,
         allowNull: false
+    },
+    categoryId: {
+        type: sequelize.INTEGER,
+        allowNull: true
     }
 });
 

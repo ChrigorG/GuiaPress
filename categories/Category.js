@@ -11,6 +11,10 @@ const category = connection.define('categories',{
     slug: {
         type: sequelize.STRING,
         allowNull: false
+    },
+    categoryId: {
+        type: sequelize.INTEGER,
+        allowNull: true
     }
 });
 
